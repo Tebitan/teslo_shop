@@ -31,5 +31,5 @@ yarn start:dev
 7. Ejecutar SEDD , LLenado de la BBDD
 
 ```
-yarn start:dev
+http://localhost:3000/api/seed
 ```
