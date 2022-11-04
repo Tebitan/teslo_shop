@@ -3,8 +3,10 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { ProductImage } from './product-image.entity';
 
 @Entity()
 export class Product {
@@ -26,6 +28,12 @@ export class Product {
   gender: string;
   @Column('text', { array: true, default: [] })
   tags: string[];
+  @OneToMany(() => ProductImage, (productImage) => productImage.product, {
+    cascade: true,
+    eager: true,
+  })
+  //eager: -> Cuando realizamos algun find nos traiga la relacion
+  images?: ProductImage[];
 
   //modifica la data antes de insertar
   @BeforeInsert()

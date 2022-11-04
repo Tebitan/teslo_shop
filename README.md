@@ -27,3 +27,9 @@ docker-compose up -d
 ```
 yarn start:dev
 ```
+
+7. Ejecutar SEDD , LLenado de la BBDD
+
+```
+yarn start:dev
+```
