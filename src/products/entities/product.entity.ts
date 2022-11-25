@@ -3,10 +3,13 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ProductImage } from './product-image.entity';
+import { User } from '../../auth/entities/user.entity';
+import { userInfo } from 'os';
 
 @Entity({ name: 'products' })
 export class Product {
@@ -34,6 +37,10 @@ export class Product {
   })
   //eager: -> Cuando realizamos algun find nos traiga la relacion
   images?: ProductImage[];
+  @ManyToOne(() => User, (user) => user.product, {
+    eager: true,
+  })
+  user: User;
 
   //modifica la data antes de insertar
   @BeforeInsert()
